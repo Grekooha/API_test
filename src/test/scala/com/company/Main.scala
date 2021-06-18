@@ -7,7 +7,6 @@ class Main extends AnyFlatSpec {
   val idExist: Int = 222
   val idNotExist: Int = 0
 
-
   val api = new PetApi()
 
   it should "add a new pet with id" in {
