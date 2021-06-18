@@ -8,22 +8,27 @@ class PetApi {
   RestAssured.baseURI = "https://petstore.swagger.io"
   RestAssured.basePath = "/v2/"
 
-  def getPet(id: Int): PetApi = {
+  def isExist(id: Int): PetApi = {
     when().get(s"/pet/$id")
       .then()
       .statusCode(200)
     this
   }
 
-  def getPetName(id: Int): PetApi = {
-    val namePet = when().get(s"/pet/$id")
-      .jsonPath.getString("name")
-
-    println(namePet)
+  def isNotExist(id: Int): PetApi = {
+    when().get(s"/pet/$id")
+      .then()
+      .statusCode(404)
     this
   }
 
-  def post(id: Int): PetApi = {
+  def getPetName(id: Int): PetApi = {
+    when().get(s"/pet/$id")
+      .jsonPath.getString("name")
+    this
+  }
+
+  def addPet(id: Int): PetApi = {
     val jsonFile: String = s"{\n  \"id\": $id,\n  \"category\": {\n    \"id\": 0,\n   " +
       " \"name\": \"string\"\n  },\n  \"name\": \"doggie\",\n  \"photoUrls\": [\n    " +
       "\"string\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 0,\n      \"name\": \"string\"\n    }\n  ],\n  " +
@@ -41,5 +46,4 @@ class PetApi {
       .statusCode(200)
     this
   }
-
 }

@@ -4,22 +4,27 @@ import org.scalatest.flatspec.AnyFlatSpec
 
 class Main extends AnyFlatSpec {
 
-  val page = new PetApi()
+  val idExist: Int = 222
+  val idNotExist: Int = 0
 
-  it should "get pet by id" in {
-    page
-      .getPet(200)
-      .getPet(404)
+
+  val api = new PetApi()
+
+  it should "add a new pet with id" in {
+    api
+      .addPet(idExist)
+  }
+  it should "pet by id is exist" in {
+    api
+      .isExist(idExist)
+  }
+  it should "pet by id is not exist" in {
+    api
+      .isNotExist(idNotExist)
   }
 
   it should "get pet's name by id" in {
-    page
-      .getPetName(200)
-      .getPetName(404)
-  }
-
-  it should "add a new pet whith id" in {
-    page
-      .post(200)
+    api
+      .getPetName(idExist)
   }
 }
