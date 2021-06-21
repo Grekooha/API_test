@@ -9,23 +9,27 @@ class PetApi {
   RestAssured.basePath = "/v2/"
 
   def isExist(id: Int): PetApi = {
-    when().get(s"/pet/$id")
+    when()
+      .get(s"/pet/$id")
       .then()
       .statusCode(200)
     this
   }
 
   def isNotExist(id: Int): PetApi = {
-    when().get(s"/pet/$id")
+    when()
+      .get(s"/pet/$id")
       .then()
       .statusCode(404)
     this
   }
 
-  def getPetName(id: Int): PetApi = {
-    when().get(s"/pet/$id")
+  def getPetName(id: Int) = {
+    when()
+      .get(s"/pet/$id")
+      .then()
+      .extract()
       .jsonPath.getString("name")
-    this
   }
 
   def addPet(id: Int): PetApi = {

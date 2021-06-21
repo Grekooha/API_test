@@ -22,8 +22,8 @@ class Main extends AnyFlatSpec {
       .isNotExist(idNotExist)
   }
 
-  it should "get pet's name by id" in {
-    api
-      .getPetName(idExist)
+  it should "print pet's name by id" in {
+
+    println(api.getPetName(idExist))
   }
 }
