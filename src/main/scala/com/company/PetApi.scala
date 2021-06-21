@@ -24,7 +24,7 @@ class PetApi {
     this
   }
 
-  def getPetName(id: Int) = {
+  def getPetName(id: Int): String = {
     when()
       .get(s"/pet/$id")
       .then()
