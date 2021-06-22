@@ -4,7 +4,6 @@ import io.restassured.RestAssured
 import io.restassured.RestAssured._
 import io.restassured.module.scala.RestAssuredSupport.AddThenToResponse
 
-
 class PetApi {
   RestAssured.baseURI = "https://petstore.swagger.io"
   RestAssured.basePath = "/v2/"
