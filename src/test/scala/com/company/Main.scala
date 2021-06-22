@@ -13,10 +13,12 @@ class Main extends AnyFlatSpec {
     api
       .addPet(idExist)
   }
+
   it should "pet by id is exist" in {
     api
       .isExist(idExist)
   }
+
   it should "pet by id is not exist" in {
     api
       .isNotExist(idNotExist)
@@ -24,6 +26,18 @@ class Main extends AnyFlatSpec {
 
   it should "print pet's name by id" in {
 
-    println(api.getPetName(idExist))
+    api
+      .getPetName(idExist)
+  }
+
+  it should "available pet's" in {
+
+    api
+      .petIsAvailable(idExist)
+  }
+  it should "10 available pet's" in {
+
+    api
+      .getAvailablePet(10)
   }
 }
